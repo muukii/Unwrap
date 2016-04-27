@@ -1,0 +1,8 @@
+use_frameworks!
+
+
+target 'Unwrap_Tests', :exclusive => true do
+  pod 'Unwrap', :path => '../'
+
+  
+end
