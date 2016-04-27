@@ -1,0 +1,14 @@
+PODS:
+  - Unwrap (0.1.0)
+
+DEPENDENCIES:
+  - Unwrap (from `../`)
+
+EXTERNAL SOURCES:
+  Unwrap:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Unwrap: 430f0b760bb6fce51f1f8c3df7ce38bc5327fada
+
+COCOAPODS: 0.39.0

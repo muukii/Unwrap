@@ -5,9 +5,28 @@
 [![License](https://img.shields.io/cocoapods/l/Unwrap.svg?style=flat)](http://cocoapods.org/pods/Unwrap)
 [![Platform](https://img.shields.io/cocoapods/p/Unwrap.svg?style=flat)](http://cocoapods.org/pods/Unwrap)
 
+Syntax sugar for unwrapping while throwing error for nil
+
+With this syntax sugar you can unwrap variables while throwing error for nil.
+It's useful in closures/functions with throw.
+
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+```swift
+{ [weak self] in
+    let _self = try unwrap(self)
+}
+```
+
+- RxSwift
+
+```swift
+operation
+    .doOnNext { [weak self] i
+        let _self = try unwrap(self)
+        _self.value = "abc"
+    }    
+```
 
 ## Requirements
 
