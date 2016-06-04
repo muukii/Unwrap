@@ -10,7 +10,24 @@ Syntax sugar for unwrapping while throwing error for nil
 With this syntax sugar you can unwrap variables while throwing error for nil.
 It's useful in closures/functions with throw.
 
+
+```swift
+func unwrap<T: UnwrapProtocol>(object: T, _ error: ErrorType = default) throws -> T.Wrapped
+```
+
 ## Usage
+
+```swift
+let foo: Int = 3
+let bar: Int? = 3
+```
+
+```swift
+try unwrap(foo) // Compile error
+try unwrap(bar) // OK
+```
+
+### Advanced
 
 ```swift
 { [weak self] in
