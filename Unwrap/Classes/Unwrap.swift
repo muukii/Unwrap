@@ -20,16 +20,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-public enum UnwrapError: ErrorType {
-    case IsNone
+public protocol UnwrapProtocol {
+    associatedtype Wrapped
+    var value: Wrapped? { get }
 }
 
-public func unwrap<T>(value: T?) throws -> T {
-    
-    guard let value = value else {
-        
-        throw UnwrapError.IsNone
+extension Optional: UnwrapProtocol {
+    /// Cast `Optional<Wrapped>` to `Wrapped?`
+    public var value: Wrapped? {
+        return self
     }
-    
-    return value
+}
+
+public enum UnwrapError: ErrorType {
+    case FailedToUnwrap
+}
+
+public func unwrap<T: UnwrapProtocol>(object: T, _ error: ErrorType = UnwrapError.FailedToUnwrap) throws -> T.Wrapped {
+    guard let object = object.value else{
+        throw error
+    }
+    return object
 }
