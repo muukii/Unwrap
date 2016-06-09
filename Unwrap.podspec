@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Unwrap"
-  s.version          = "1.0.0"
+  s.version          = "2.0.0"
   s.summary          = "Syntax sugar for unwrapping while throwing error for nil"
   s.description      = <<-DESC
 Syntax sugar for unwrapping while throwing error for nil
