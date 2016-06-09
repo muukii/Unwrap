@@ -20,4 +20,5 @@ It's useful in closures/functions with throw.
   s.watchos.deployment_target = '2.0'
 
   s.source_files = 'Unwrap/Classes/**/*'
+  s.dependency "OptionalProtocol", "~> 0.1"
 end

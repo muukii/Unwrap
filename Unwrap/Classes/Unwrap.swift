@@ -20,23 +20,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-public protocol UnwrapProtocol {
-    associatedtype Wrapped
-    var value: Wrapped? { get }
-}
-
-extension Optional: UnwrapProtocol {
-    /// Cast `Optional<Wrapped>` to `Wrapped?`
-    public var value: Wrapped? {
-        return self
-    }
-}
+import OptionalProtocol
 
 public enum UnwrapError: ErrorType {
     case FailedToUnwrap
 }
 
-public func unwrap<T: UnwrapProtocol>(object: T, _ error: ErrorType = UnwrapError.FailedToUnwrap) throws -> T.Wrapped {
+public func unwrap<T: OptionalProtocol>(object: T, _ error: ErrorType = UnwrapError.FailedToUnwrap) throws -> T.Wrapped {
     guard let object = object.value else{
         throw error
     }

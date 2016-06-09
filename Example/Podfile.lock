@@ -1,5 +1,7 @@
 PODS:
-  - Unwrap (0.1.0)
+  - OptionalProtocol (0.1.0)
+  - Unwrap (1.0.0):
+    - OptionalProtocol (~> 0.1)
 
 DEPENDENCIES:
   - Unwrap (from `../`)
@@ -9,6 +11,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Unwrap: 430f0b760bb6fce51f1f8c3df7ce38bc5327fada
+  OptionalProtocol: 3b1f2434f4158be3c9d42f9fdfbca6cbd04e1bcd
+  Unwrap: 7fb47aa76e46742848f685a6ee6627857d3592d1
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 365920fdaa70fb03325b59e66e3608df36626de9
+
+COCOAPODS: 1.0.1
