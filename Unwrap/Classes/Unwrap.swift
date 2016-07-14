@@ -22,11 +22,11 @@
 
 import OptionalProtocol
 
-public enum UnwrapError: ErrorType {
-    case FailedToUnwrap
+public enum UnwrapError: ErrorProtocol {
+    case failedToUnwrap
 }
 
-public func unwrap<T: OptionalProtocol>(object: T, _ error: ErrorType = UnwrapError.FailedToUnwrap) throws -> T.Wrapped {
+public func unwrap<T: OptionalProtocol>(_ object: T, _ error: ErrorProtocol = UnwrapError.failedToUnwrap) throws -> T.Wrapped {
     guard let object = object.value else{
         throw error
     }
