@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Unwrap"
-  s.version          = "2.0.0"
+  s.version          = "2.1.1"
   s.summary          = "Syntax sugar for unwrapping while throwing error for nil"
   s.description      = <<-DESC
 Syntax sugar for unwrapping while throwing error for nil
@@ -16,9 +16,8 @@ It's useful in closures/functions with throw.
   s.social_media_url = 'https://twitter.com/muukii0803'
 
   s.ios.deployment_target = '8.0'
-  s.tvos.deployment_target = '9.2'
   s.watchos.deployment_target = '2.0'
 
   s.source_files = 'Unwrap/Classes/**/*'
-  s.dependency "OptionalProtocol", "~> 0.1"
+  s.dependency "OptionalProtocol"
 end
