@@ -22,10 +22,22 @@
 
 import OptionalProtocol
 
+extension Optional {
+    
+    public func unwrap(error: Error = UnwrapError.FailedToUnwrap) throws -> Optional.Wrapped {
+        return try Unwrap.unwrap(self, error)
+    }
+    
+    public func unwrap(error: Error = UnwrapError.FailedToUnwrap, then: (Optional.Wrapped) -> Void) throws {
+        then(try Unwrap.unwrap(self, error))
+    }
+}
+
 public enum UnwrapError: Error {
     case FailedToUnwrap
 }
 
+@available(*, deprecated: 2.2.0, message: "use Optional.unwrap()")
 public func unwrap<T: OptionalProtocol>(_ object: T, _ error: Error = UnwrapError.FailedToUnwrap) throws -> T.Wrapped {
     guard let object = object.value else{
         throw error
@@ -33,6 +45,7 @@ public func unwrap<T: OptionalProtocol>(_ object: T, _ error: Error = UnwrapErro
     return object
 }
 
+@available(*, deprecated: 2.2.0, message: "use Optional.unwrap()")
 public func unwrap<T: OptionalProtocol>(_ object: T, _ error: Error = UnwrapError.FailedToUnwrap, closure: (T.Wrapped) -> Void) throws {
     guard let object = object.value else{
         throw error
