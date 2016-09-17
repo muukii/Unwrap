@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/Unwrap.svg?style=flat)](http://cocoapods.org/pods/Unwrap)
 [![License](https://img.shields.io/cocoapods/l/Unwrap.svg?style=flat)](http://cocoapods.org/pods/Unwrap)
 [![Platform](https://img.shields.io/cocoapods/p/Unwrap.svg?style=flat)](http://cocoapods.org/pods/Unwrap)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Syntax sugar for unwrapping while throwing error for nil
 
