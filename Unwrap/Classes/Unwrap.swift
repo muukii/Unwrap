@@ -22,33 +22,34 @@
 
 import OptionalProtocol
 
-extension Optional {
-    
-    public func unwrap(error: Error = UnwrapError.FailedToUnwrap) throws -> Optional.Wrapped {
-        return try Unwrap.unwrap(self, error)
-    }
-    
-    public func unwrap(error: Error = UnwrapError.FailedToUnwrap, then: (Optional.Wrapped) -> Void) throws {
-        then(try Unwrap.unwrap(self, error))
-    }
-}
-
 public enum UnwrapError: Error {
     case FailedToUnwrap
 }
 
-@available(*, deprecated: 2.2.0, message: "use Optional.unwrap()")
-public func unwrap<T: OptionalProtocol>(_ object: T, _ error: Error = UnwrapError.FailedToUnwrap) throws -> T.Wrapped {
-    guard let object = object.value else{
-        throw error
+extension Optional {
+    
+    @available(*, deprecated: 3.0.0, message: "use Optional.unwrapped()")
+    public func unwrap(error: Error = UnwrapError.FailedToUnwrap) throws -> Optional.Wrapped {
+        return try unwrapped(error: error)
     }
-    return object
+    
+    public func unwrapped(error: Error = UnwrapError.FailedToUnwrap) throws -> Optional.Wrapped {
+        switch self {
+        case .none:
+            throw error
+        case .some(let value):
+            return value
+        }
+    }
+    
+    public func unwrap(error: Error = UnwrapError.FailedToUnwrap, then: (Optional.Wrapped) -> Void) throws {
+        switch self {
+        case .none:
+            throw error
+        case .some(let value):
+            then(value)
+        }
+    }
 }
 
-@available(*, deprecated: 2.2.0, message: "use Optional.unwrap()")
-public func unwrap<T: OptionalProtocol>(_ object: T, _ error: Error = UnwrapError.FailedToUnwrap, closure: (T.Wrapped) -> Void) throws {
-    guard let object = object.value else{
-        throw error
-    }
-    closure(object)
-}
+
