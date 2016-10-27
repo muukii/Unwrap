@@ -20,8 +20,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-import OptionalProtocol
-
 public enum UnwrapError: Error {
     case FailedToUnwrap
 }
@@ -29,11 +27,11 @@ public enum UnwrapError: Error {
 extension Optional {
     
     @available(*, deprecated: 3.0.0, message: "use Optional.unwrapped()")
-    public func unwrap(error: Error = UnwrapError.FailedToUnwrap) throws -> Optional.Wrapped {
+    public func unwrap(error: Error = UnwrapError.FailedToUnwrap) throws -> Wrapped {
         return try unwrapped(error: error)
     }
     
-    public func unwrapped(error: Error = UnwrapError.FailedToUnwrap) throws -> Optional.Wrapped {
+    public func unwrapped(error: Error = UnwrapError.FailedToUnwrap) throws -> Wrapped {
         switch self {
         case .none:
             throw error
@@ -42,7 +40,7 @@ extension Optional {
         }
     }
     
-    public func unwrap(error: Error = UnwrapError.FailedToUnwrap, then: (Optional.Wrapped) -> Void) throws {
+    public func unwrap(error: Error = UnwrapError.FailedToUnwrap, then: (Wrapped) -> Void) throws {
         switch self {
         case .none:
             throw error

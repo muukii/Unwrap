@@ -10,7 +10,6 @@
 		4B9118041D833F5C0016FA7A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 4B9118021D833F5C0016FA7A /* .gitkeep */; };
 		4B9118051D833F5C0016FA7A /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9118031D833F5C0016FA7A /* Unwrap.swift */; };
 		4B9118071D833F820016FA7A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B9118061D833F820016FA7A /* Info.plist */; };
-		4B9118091D8341260016FA7A /* OptionalProtocol.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B9118081D8341260016FA7A /* OptionalProtocol.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,7 +17,6 @@
 		4B9118021D833F5C0016FA7A /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		4B9118031D833F5C0016FA7A /* Unwrap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 		4B9118061D833F820016FA7A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4B9118081D8341260016FA7A /* OptionalProtocol.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OptionalProtocol.framework; path = Carthage/Build/iOS/OptionalProtocol.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,7 +24,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B9118091D8341260016FA7A /* OptionalProtocol.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,7 +33,6 @@
 		4B9117EB1D833F3B0016FA7A = {
 			isa = PBXGroup;
 			children = (
-				4B9118081D8341260016FA7A /* OptionalProtocol.framework */,
 				4B9118001D833F5C0016FA7A /* Unwrap */,
 				4B9117F61D833F3B0016FA7A /* Products */,
 			);
