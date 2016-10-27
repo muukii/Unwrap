@@ -11,28 +11,25 @@ Syntax sugar for unwrapping while throwing error for nil
 With this syntax sugar you can unwrap variables while throwing error for nil.
 It's useful in closures/functions with throw.
 
-
 ```swift
-func unwrap<T: UnwrapProtocol>(object: T, _ error: ErrorType = default) throws -> T.Wrapped
+func unwrapped(error: Error = UnwrapError.FailedToUnwrap) throws -> Optional.Wrapped {
 ```
 
 ## Usage
 
 ```swift
-let foo: Int = 3
 let bar: Int? = 3
 ```
 
 ```swift
-try unwrap(foo) // Compile error
-try unwrap(bar) // OK
+let v: Int = try bar.unwrapped()
 ```
 
 ### Advanced
 
 ```swift
 { [weak self] in
-    let _self = try unwrap(self)
+    let _self = try self.unwrapped()
 }
 ```
 
@@ -41,7 +38,7 @@ try unwrap(bar) // OK
 ```swift
 operation
     .doOnNext { [weak self] i
-        let _self = try unwrap(self)
+        let _self = try self.unwrapped()
         _self.value = "abc"
     }    
 ```
