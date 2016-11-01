@@ -21,33 +21,28 @@
 // THE SOFTWARE.
 
 public enum UnwrapError: Error {
-    case FailedToUnwrap
+  case FailedToUnwrap(file: StaticString, function: StaticString, line: UInt)
 }
 
 extension Optional {
-    
-    @available(*, deprecated: 3.0.0, message: "use Optional.unwrapped()")
-    public func unwrap(error: Error = UnwrapError.FailedToUnwrap) throws -> Wrapped {
-        return try unwrapped(error: error)
+  
+  public func unwrapped(error: Error? = nil, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) throws -> Wrapped {
+    switch self {
+    case .none:
+      throw error ?? UnwrapError.FailedToUnwrap(file: file, function: function, line: line)
+    case .some(let value):
+      return value
     }
-    
-    public func unwrapped(error: Error = UnwrapError.FailedToUnwrap) throws -> Wrapped {
-        switch self {
-        case .none:
-            throw error
-        case .some(let value):
-            return value
-        }
+  }
+  
+  public func unwrap(error: Error? = nil, file: StaticString = #file, function: StaticString = #function, line: UInt = #line, then: (Wrapped) -> Void) throws {
+    switch self {
+    case .none:
+      throw error ?? UnwrapError.FailedToUnwrap(file: file, function: function, line: line)
+    case .some(let value):
+      then(value)
     }
-    
-    public func unwrap(error: Error = UnwrapError.FailedToUnwrap, then: (Wrapped) -> Void) throws {
-        switch self {
-        case .none:
-            throw error
-        case .some(let value):
-            then(value)
-        }
-    }
+  }
 }
 
 
